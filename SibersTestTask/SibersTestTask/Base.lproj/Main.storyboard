@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -94,187 +95,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BSh-Rd-Z9d">
-                                <rect key="frame" x="66.5" y="44" width="281" height="30"/>
+                                <rect key="frame" x="66.5" y="44" width="281" height="29"/>
                                 <state key="normal" title="Закончить игру"/>
                                 <connections>
                                     <segue destination="BYZ-38-t0r" kind="show" id="bRo-32-1PB"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oZ7-aj-ETK">
-                                <rect key="frame" x="20" y="82" width="374" height="557"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tkA-Wd-cEn">
-                                        <rect key="frame" x="317" y="252.5" width="52" height="52"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="52" id="nLP-os-TFn"/>
-                                            <constraint firstAttribute="width" constant="52" id="of0-Ei-clW"/>
-                                        </constraints>
-                                        <state key="normal" image="arrow_right"/>
-                                        <connections>
-                                            <action selector="goRightRoom:" destination="A3z-Vp-scU" eventType="touchUpInside" id="phr-Cz-q5C"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="32U-E0-sJj">
-                                        <rect key="frame" x="5" y="252.5" width="52" height="52"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="52" id="2zh-ZC-t3t"/>
-                                            <constraint firstAttribute="height" constant="52" id="DjX-1S-bMe"/>
-                                        </constraints>
-                                        <state key="normal" image="arrow_left"/>
-                                        <connections>
-                                            <action selector="goLeftRoom:" destination="A3z-Vp-scU" eventType="touchUpInside" id="pFO-U8-uAC"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t2a-dH-pYc">
-                                        <rect key="frame" x="161" y="500" width="52" height="52"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="52" id="09N-pr-eST"/>
-                                            <constraint firstAttribute="height" constant="52" id="0pR-ax-zs8"/>
-                                        </constraints>
-                                        <state key="normal" image="arrow_down"/>
-                                        <connections>
-                                            <action selector="goDownRoom:" destination="A3z-Vp-scU" eventType="touchUpInside" id="ZSG-fU-otj"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nrB-ca-baK">
-                                        <rect key="frame" x="161" y="5" width="52" height="52"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="52" id="rIy-JB-VtH"/>
-                                            <constraint firstAttribute="height" constant="52" id="th1-dB-H8H"/>
-                                        </constraints>
-                                        <state key="normal" image="Копия icons8-right-52"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="id" value="up"/>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="goUpRoom:" destination="A3z-Vp-scU" eventType="touchUpInside" id="R71-3d-PZe"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="chestRoomButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="auz-nF-OCa">
-                                        <rect key="frame" x="161" y="252.5" width="52" height="52"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="52" id="Nor-bt-dZe"/>
-                                            <constraint firstAttribute="width" constant="52" id="lcz-h3-yGd"/>
-                                        </constraints>
-                                        <state key="normal" image="icons8-toolbox-52"/>
-                                        <connections>
-                                            <action selector="roomItemClick:" destination="A3z-Vp-scU" eventType="touchUpInside" id="cVY-9t-ocN"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="torchRoomButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iMh-X5-NL6">
-                                        <rect key="frame" x="52" y="453" width="52" height="52"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="52" id="H4c-F7-IXq"/>
-                                            <constraint firstAttribute="height" constant="52" id="kMj-Pc-GzZ"/>
-                                        </constraints>
-                                        <state key="normal" image="icons8-olympic-torch-52"/>
-                                        <connections>
-                                            <action selector="roomItemClick:" destination="A3z-Vp-scU" eventType="touchUpInside" id="zOc-E3-cbr"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZH5-g9-8xa">
-                                        <rect key="frame" x="52" y="52" width="52" height="52"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="52" id="i7o-Nv-dnO"/>
-                                            <constraint firstAttribute="width" constant="52" id="wdK-x7-1w9"/>
-                                        </constraints>
-                                        <state key="normal" image="icons8-key-52"/>
-                                        <connections>
-                                            <action selector="roomItemClick:" destination="A3z-Vp-scU" eventType="touchUpInside" id="fpt-RS-x8G"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="stoneRoomButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V6r-jX-Tuw">
-                                        <rect key="frame" x="52" y="112" width="52" height="52"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="52" id="Fni-Cp-TE4"/>
-                                            <constraint firstAttribute="width" constant="52" id="GvY-g1-GZX"/>
-                                        </constraints>
-                                        <state key="normal" image="icons8-rock-52"/>
-                                        <connections>
-                                            <action selector="roomItemClick:" destination="A3z-Vp-scU" eventType="touchUpInside" id="SKX-6n-VGu"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5vv-9U-sBt">
-                                        <rect key="frame" x="270" y="52" width="52" height="52"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="52" id="Kkv-fI-2T2"/>
-                                            <constraint firstAttribute="height" constant="52" id="OgI-RA-ekD"/>
-                                        </constraints>
-                                        <state key="normal" image="icons8-mushroom-52"/>
-                                        <connections>
-                                            <action selector="roomItemClick:" destination="A3z-Vp-scU" eventType="touchUpInside" id="IZK-XK-72w"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="boneRoomButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcm-Ld-8Lw">
-                                        <rect key="frame" x="112" y="453" width="52" height="52"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="52" id="6YX-V5-Z03"/>
-                                            <constraint firstAttribute="width" constant="52" id="khK-qG-hym"/>
-                                        </constraints>
-                                        <state key="normal" image="icons8-dog-bone-52"/>
-                                        <connections>
-                                            <action selector="roomItemClick:" destination="A3z-Vp-scU" eventType="touchUpInside" id="yVY-sf-d5S"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="appleRoomButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nt0-Ph-4LI">
-                                        <rect key="frame" x="270" y="453" width="52" height="52"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="52" id="lX9-mK-3aI"/>
-                                            <constraint firstAttribute="width" constant="52" id="r2v-zz-y22"/>
-                                        </constraints>
-                                        <state key="normal" image="icons8-apple-52"/>
-                                        <connections>
-                                            <action selector="roomItemClick:" destination="A3z-Vp-scU" eventType="touchUpInside" id="tT9-yW-R4Z"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pwy-8K-Teu">
-                                        <rect key="frame" x="161" y="192.5" width="52" height="52"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="52" id="7zB-Bk-90H"/>
-                                            <constraint firstAttribute="width" constant="52" id="tAi-BR-kFI"/>
-                                        </constraints>
-                                        <state key="normal" image="icons8-money-52"/>
-                                        <connections>
-                                            <action selector="roomItemClick:" destination="A3z-Vp-scU" eventType="touchUpInside" id="SDd-Iv-kC7"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KAp-sK-yGe">
-                                        <rect key="frame" x="177" y="172" width="20.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.93271671891830132" green="0.93271671891830132" blue="0.93271671891830132" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstItem="V6r-jX-Tuw" firstAttribute="leading" secondItem="oZ7-aj-ETK" secondAttribute="leading" constant="52" id="1K5-dF-pJI"/>
-                                    <constraint firstItem="5vv-9U-sBt" firstAttribute="top" secondItem="oZ7-aj-ETK" secondAttribute="top" constant="52" id="1eK-bH-IhO"/>
-                                    <constraint firstItem="auz-nF-OCa" firstAttribute="top" secondItem="Pwy-8K-Teu" secondAttribute="bottom" constant="8" id="5bp-iv-ofn"/>
-                                    <constraint firstItem="auz-nF-OCa" firstAttribute="centerX" secondItem="oZ7-aj-ETK" secondAttribute="centerX" id="AxR-AG-orV"/>
-                                    <constraint firstItem="auz-nF-OCa" firstAttribute="centerY" secondItem="oZ7-aj-ETK" secondAttribute="centerY" id="BNW-pd-eHi"/>
-                                    <constraint firstAttribute="bottom" secondItem="t2a-dH-pYc" secondAttribute="bottom" constant="5" id="Gdd-RX-ddq"/>
-                                    <constraint firstAttribute="trailing" secondItem="5vv-9U-sBt" secondAttribute="trailing" constant="52" id="HOp-95-nJh"/>
-                                    <constraint firstItem="ZH5-g9-8xa" firstAttribute="leading" secondItem="oZ7-aj-ETK" secondAttribute="leading" constant="52" id="Jm9-nN-Woq"/>
-                                    <constraint firstAttribute="bottom" secondItem="wcm-Ld-8Lw" secondAttribute="bottom" constant="52" id="Jq8-FE-Y2M"/>
-                                    <constraint firstItem="ZH5-g9-8xa" firstAttribute="top" secondItem="oZ7-aj-ETK" secondAttribute="top" constant="52" id="LVC-wp-YsU"/>
-                                    <constraint firstItem="nrB-ca-baK" firstAttribute="top" secondItem="oZ7-aj-ETK" secondAttribute="top" constant="5" id="Oul-sC-Iwd"/>
-                                    <constraint firstItem="wcm-Ld-8Lw" firstAttribute="leading" secondItem="iMh-X5-NL6" secondAttribute="trailing" constant="8" id="UlI-IR-UEv"/>
-                                    <constraint firstItem="iMh-X5-NL6" firstAttribute="leading" secondItem="oZ7-aj-ETK" secondAttribute="leading" constant="52" id="WVi-r6-R3k"/>
-                                    <constraint firstItem="nrB-ca-baK" firstAttribute="centerX" secondItem="oZ7-aj-ETK" secondAttribute="centerX" id="Xk3-xV-gbd"/>
-                                    <constraint firstItem="32U-E0-sJj" firstAttribute="centerY" secondItem="oZ7-aj-ETK" secondAttribute="centerY" id="Ypa-aC-xZf"/>
-                                    <constraint firstAttribute="bottom" secondItem="iMh-X5-NL6" secondAttribute="bottom" constant="52" id="bAY-d5-J1H"/>
-                                    <constraint firstItem="tkA-Wd-cEn" firstAttribute="centerY" secondItem="oZ7-aj-ETK" secondAttribute="centerY" id="c4W-EK-A1p"/>
-                                    <constraint firstItem="Pwy-8K-Teu" firstAttribute="top" secondItem="KAp-sK-yGe" secondAttribute="bottom" id="fcQ-C8-WBH"/>
-                                    <constraint firstItem="V6r-jX-Tuw" firstAttribute="top" secondItem="ZH5-g9-8xa" secondAttribute="bottom" constant="8" id="gEU-ra-W6u"/>
-                                    <constraint firstAttribute="trailing" secondItem="Nt0-Ph-4LI" secondAttribute="trailing" constant="52" id="gOj-px-Fcg"/>
-                                    <constraint firstItem="32U-E0-sJj" firstAttribute="leading" secondItem="oZ7-aj-ETK" secondAttribute="leading" constant="5" id="jOw-gv-bwU"/>
-                                    <constraint firstAttribute="bottom" secondItem="Nt0-Ph-4LI" secondAttribute="bottom" constant="52" id="qhg-Gx-VbF"/>
-                                    <constraint firstItem="KAp-sK-yGe" firstAttribute="centerX" secondItem="oZ7-aj-ETK" secondAttribute="centerX" id="xdF-MJ-knG"/>
-                                    <constraint firstItem="t2a-dH-pYc" firstAttribute="centerX" secondItem="oZ7-aj-ETK" secondAttribute="centerX" id="xuG-6A-Wi5"/>
-                                    <constraint firstItem="Pwy-8K-Teu" firstAttribute="centerX" secondItem="oZ7-aj-ETK" secondAttribute="centerX" id="zjh-BE-yBn"/>
-                                    <constraint firstAttribute="trailing" secondItem="tkA-Wd-cEn" secondAttribute="trailing" constant="5" id="zpS-sY-HJA"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1xy-s5-pFZ">
                                 <rect key="frame" x="20" y="647" width="374" height="215"/>
                                 <subviews>
@@ -439,36 +265,136 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="RQs-hF-VG0">
+                                <rect key="frame" x="20" y="93" width="374" height="544"/>
+                                <color key="backgroundColor" red="0.93271671889999996" green="0.93271671889999996" blue="0.93271671889999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Pbq-0X-03D">
+                                    <size key="itemSize" width="52" height="72"/>
+                                    <size key="estimatedItemSize" width="52" height="72"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="62" minY="62" maxX="62" maxY="62"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="roomViewCell" id="SHd-P9-uWS" customClass="RoomCollectionViewCell" customModule="SibersTestTask" customModuleProvider="target">
+                                        <rect key="frame" x="62" y="62" width="52" height="72"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Q4u-FC-c47">
+                                            <rect key="frame" x="0.0" y="0.0" width="52" height="72"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wvn-MB-qBx">
+                                                    <rect key="frame" x="0.0" y="20" width="52" height="52"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="52" id="1op-I7-m1Z"/>
+                                                        <constraint firstAttribute="width" constant="52" id="fma-vc-ImH"/>
+                                                    </constraints>
+                                                    <state key="normal" image="icons8-money-52"/>
+                                                    <connections>
+                                                        <action selector="itemClick:" destination="SHd-P9-uWS" eventType="touchUpInside" id="tzt-Gk-p1k"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6yN-nu-SGB">
+                                                    <rect key="frame" x="13.5" y="0.0" width="25" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="25" id="Q2s-By-lD2"/>
+                                                        <constraint firstAttribute="width" constant="25" id="scA-eB-0hw"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="wvn-MB-qBx" firstAttribute="leading" secondItem="Q4u-FC-c47" secondAttribute="leading" id="FK9-VI-aR1"/>
+                                                <constraint firstAttribute="trailing" secondItem="wvn-MB-qBx" secondAttribute="trailing" id="Nng-Nt-FeT"/>
+                                                <constraint firstItem="6yN-nu-SGB" firstAttribute="centerX" secondItem="Q4u-FC-c47" secondAttribute="centerX" id="Tdu-QR-H2h"/>
+                                                <constraint firstAttribute="bottom" secondItem="wvn-MB-qBx" secondAttribute="bottom" id="YlC-ya-Pyi"/>
+                                                <constraint firstItem="6yN-nu-SGB" firstAttribute="top" secondItem="Q4u-FC-c47" secondAttribute="top" id="wNz-vg-nMA"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="52" height="72"/>
+                                        <connections>
+                                            <outlet property="countLabel" destination="6yN-nu-SGB" id="ZSj-Mj-v7y"/>
+                                            <outlet property="roomItemButton" destination="wvn-MB-qBx" id="ssV-Rb-R1z"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="32U-E0-sJj">
+                                <rect key="frame" x="20" y="339" width="52" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="0CY-Jp-4Ak"/>
+                                </constraints>
+                                <state key="normal" image="arrow_left"/>
+                                <connections>
+                                    <action selector="goLeftRoom:" destination="A3z-Vp-scU" eventType="touchUpInside" id="pFO-U8-uAC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nrB-ca-baK">
+                                <rect key="frame" x="181" y="98" width="52" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="52" id="dtf-v4-YFh"/>
+                                    <constraint firstAttribute="height" constant="52" id="xiF-Fy-AVO"/>
+                                </constraints>
+                                <state key="normal" image="Копия icons8-right-52"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="up"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="goUpRoom:" destination="A3z-Vp-scU" eventType="touchUpInside" id="R71-3d-PZe"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t2a-dH-pYc">
+                                <rect key="frame" x="181" y="587" width="52" height="52"/>
+                                <state key="normal" image="arrow_down"/>
+                                <connections>
+                                    <action selector="goDownRoom:" destination="A3z-Vp-scU" eventType="touchUpInside" id="ZSG-fU-otj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tkA-Wd-cEn">
+                                <rect key="frame" x="342" y="339" width="52" height="52"/>
+                                <state key="normal" image="arrow_right"/>
+                                <connections>
+                                    <action selector="goRightRoom:" destination="A3z-Vp-scU" eventType="touchUpInside" id="phr-Cz-q5C"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="BSh-Rd-Z9d" firstAttribute="centerX" secondItem="k2O-wx-PZW" secondAttribute="centerX" id="1kw-Rv-tQW"/>
-                            <constraint firstItem="1xy-s5-pFZ" firstAttribute="top" secondItem="oZ7-aj-ETK" secondAttribute="bottom" constant="8" id="4Qk-Oz-pYo"/>
-                            <constraint firstItem="oZ7-aj-ETK" firstAttribute="leading" secondItem="Hok-ab-59K" secondAttribute="leading" constant="20" id="5Gn-9k-DvO"/>
-                            <constraint firstItem="oZ7-aj-ETK" firstAttribute="top" secondItem="G7d-so-sYk" secondAttribute="bottom" constant="8" id="9dp-HP-Au6"/>
                             <constraint firstItem="yHO-rM-x7D" firstAttribute="leading" secondItem="G7d-so-sYk" secondAttribute="trailing" constant="5" id="C42-gC-Z0U"/>
                             <constraint firstItem="h36-SS-CxL" firstAttribute="top" secondItem="Hok-ab-59K" secondAttribute="top" constant="3" id="ExD-9j-9Kk"/>
                             <constraint firstItem="yHO-rM-x7D" firstAttribute="top" secondItem="Hok-ab-59K" secondAttribute="top" constant="2" id="LKS-eL-wZ3"/>
+                            <constraint firstItem="1xy-s5-pFZ" firstAttribute="top" secondItem="RQs-hF-VG0" secondAttribute="bottom" constant="10" id="LMM-iS-0Nn"/>
+                            <constraint firstItem="nrB-ca-baK" firstAttribute="centerX" secondItem="k2O-wx-PZW" secondAttribute="centerX" id="NtP-dV-4z4"/>
                             <constraint firstItem="QBm-E9-Pbw" firstAttribute="leading" secondItem="BSh-Rd-Z9d" secondAttribute="trailing" constant="2" id="Oat-S0-lZF"/>
                             <constraint firstItem="QBm-E9-Pbw" firstAttribute="top" secondItem="Hok-ab-59K" secondAttribute="top" constant="2" id="PD5-Xb-oAi"/>
                             <constraint firstItem="G7d-so-sYk" firstAttribute="leading" secondItem="Hok-ab-59K" secondAttribute="leading" constant="20" id="PhL-KN-Jqi"/>
                             <constraint firstItem="Hok-ab-59K" firstAttribute="trailing" secondItem="1xy-s5-pFZ" secondAttribute="trailing" constant="20" id="Q2C-nf-BWs"/>
+                            <constraint firstItem="t2a-dH-pYc" firstAttribute="leading" secondItem="nrB-ca-baK" secondAttribute="leading" id="VX6-Jn-VVX"/>
+                            <constraint firstItem="32U-E0-sJj" firstAttribute="top" secondItem="k2O-wx-PZW" secondAttribute="top" constant="339" id="Zka-yq-S7z"/>
+                            <constraint firstItem="nrB-ca-baK" firstAttribute="top" secondItem="BSh-Rd-Z9d" secondAttribute="bottom" constant="25" id="aKU-8n-pgR"/>
                             <constraint firstItem="G7d-so-sYk" firstAttribute="top" secondItem="Hok-ab-59K" secondAttribute="top" constant="2" id="bl3-xU-iAX"/>
                             <constraint firstItem="1xy-s5-pFZ" firstAttribute="leading" secondItem="Hok-ab-59K" secondAttribute="leading" constant="20" id="c0K-1K-pup"/>
+                            <constraint firstItem="Hok-ab-59K" firstAttribute="trailing" secondItem="RQs-hF-VG0" secondAttribute="trailing" constant="20" id="ct9-TA-ADN"/>
+                            <constraint firstItem="32U-E0-sJj" firstAttribute="leading" secondItem="G7d-so-sYk" secondAttribute="leading" id="d7r-0l-BeC"/>
+                            <constraint firstItem="32U-E0-sJj" firstAttribute="centerY" secondItem="RQs-hF-VG0" secondAttribute="centerY" id="hz6-AT-OYb"/>
+                            <constraint firstItem="RQs-hF-VG0" firstAttribute="top" secondItem="BSh-Rd-Z9d" secondAttribute="bottom" constant="20" id="i4R-7a-A2m"/>
                             <constraint firstItem="1xy-s5-pFZ" firstAttribute="bottom" secondItem="Hok-ab-59K" secondAttribute="bottom" id="jm7-Zl-74d"/>
                             <constraint firstItem="Hok-ab-59K" firstAttribute="trailing" secondItem="h36-SS-CxL" secondAttribute="trailing" constant="20" id="l09-eZ-1uv"/>
+                            <constraint firstItem="tkA-Wd-cEn" firstAttribute="trailing" secondItem="h36-SS-CxL" secondAttribute="trailing" id="ogH-wL-XAB"/>
                             <constraint firstItem="h36-SS-CxL" firstAttribute="leading" secondItem="QBm-E9-Pbw" secondAttribute="trailing" constant="4" id="qGC-qR-7Nz"/>
                             <constraint firstItem="BSh-Rd-Z9d" firstAttribute="top" secondItem="Hok-ab-59K" secondAttribute="top" id="tWR-HB-VrD"/>
-                            <constraint firstItem="Hok-ab-59K" firstAttribute="trailing" secondItem="oZ7-aj-ETK" secondAttribute="trailing" constant="20" id="yZ6-SG-k1Y"/>
+                            <constraint firstItem="1xy-s5-pFZ" firstAttribute="top" secondItem="t2a-dH-pYc" secondAttribute="bottom" constant="8" id="vfI-yq-hQK"/>
+                            <constraint firstItem="RQs-hF-VG0" firstAttribute="leading" secondItem="Hok-ab-59K" secondAttribute="leading" constant="20" id="wxI-T8-hsc"/>
+                            <constraint firstItem="tkA-Wd-cEn" firstAttribute="top" secondItem="32U-E0-sJj" secondAttribute="top" id="x72-ux-VWb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Hok-ab-59K"/>
                     </view>
                     <connections>
                         <outlet property="appleInventoryButton" destination="xVT-VA-IMi" id="PF8-LI-Ibb"/>
-                        <outlet property="appleRoomButton" destination="Nt0-Ph-4LI" id="83v-0i-bUQ"/>
                         <outlet property="boneInventoryButton" destination="L53-sh-yNP" id="p5z-OI-ZUG"/>
-                        <outlet property="boneRoomButton" destination="wcm-Ld-8Lw" id="1Hd-Fx-Dyw"/>
-                        <outlet property="chestRoomButton" destination="auz-nF-OCa" id="uUw-nu-YAb"/>
                         <outlet property="destroyInventoryButton" destination="AHN-hz-5xu" id="GwG-VA-Fha"/>
                         <outlet property="dropInventoryButton" destination="NhL-Eg-30R" id="j74-n1-eKa"/>
                         <outlet property="goDownButton" destination="t2a-dH-pYc" id="e8E-vn-T7L"/>
@@ -479,16 +405,11 @@
                         <outlet property="inventoryItemDescription" destination="Mlm-bG-zdO" id="ZT7-Mo-aSL"/>
                         <outlet property="inventoryItemName" destination="GL7-BV-0hZ" id="MXY-eS-AK0"/>
                         <outlet property="keyInventoryButton" destination="Orn-MN-1rf" id="uFi-2w-cE4"/>
-                        <outlet property="keyRoomButton" destination="ZH5-g9-8xa" id="Cxt-45-8Gg"/>
                         <outlet property="moneyCountLabel" destination="G7d-so-sYk" id="56u-M7-5KQ"/>
-                        <outlet property="moneyRoomButton" destination="Pwy-8K-Teu" id="GpG-vW-9e6"/>
-                        <outlet property="moneyRoomCountLabel" destination="KAp-sK-yGe" id="byH-Iw-tyx"/>
                         <outlet property="mushroomInventoryButton" destination="hKn-OE-hG7" id="1Ve-jN-Q3M"/>
-                        <outlet property="mushroomRoomButton" destination="5vv-9U-sBt" id="Nvw-2p-GrX"/>
+                        <outlet property="roomItemsCollectionView" destination="RQs-hF-VG0" id="h1g-Jl-SuC"/>
                         <outlet property="stoneInventoryButton" destination="Nh7-wV-gle" id="kqY-aK-mcZ"/>
-                        <outlet property="stoneRoomButton" destination="V6r-jX-Tuw" id="5xK-Zp-KlW"/>
                         <outlet property="torchInventoryButton" destination="5rL-8r-4nV" id="HvN-Z9-9S2"/>
-                        <outlet property="torchRoomButton" destination="iMh-X5-NL6" id="HDf-Pi-Z9n"/>
                         <outlet property="useInventoryButton" destination="i5l-0k-xAk" id="l29-Mu-Y5r"/>
                     </connections>
                 </viewController>
@@ -510,7 +431,6 @@
         <image name="icons8-mushroom-52" width="52" height="52"/>
         <image name="icons8-olympic-torch-52" width="52" height="52"/>
         <image name="icons8-rock-52" width="52" height="52"/>
-        <image name="icons8-toolbox-52" width="52" height="52"/>
         <image name="Копия icons8-right-52" width="52" height="52"/>
     </resources>
 </document>

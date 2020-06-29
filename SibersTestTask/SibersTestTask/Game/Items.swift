@@ -20,10 +20,12 @@ class Item {
     let itemId: ItemId
     let itemName: String
     let itemDecription: String
-    init(itemName: String, descriprion: String, id: ItemId) {
+    let imageName: String?
+    init(itemName: String, descriprion: String, id: ItemId, imageName: String) {
         self.itemId = id
         self.itemName = itemName
         self.itemDecription = descriprion
+        self.imageName = imageName
     }
 }
 
@@ -119,7 +121,7 @@ class TakeDropAndDestroyItem: Item, TakebleItem, DropableItem, DestroyableItem {
 final class KeyForChest: TakeDropAndDestroyItem, UsableItem {
     let destroyAfterUse: Bool = true
     init() {
-        super.init(itemName: "Ключ от сундука", descriprion: "Используйте этот ключ, чтобы открыть сундук.", id: .keyForChest)
+        super.init(itemName: "Ключ от сундука", descriprion: "Используйте этот ключ, чтобы открыть сундук.", id: .keyForChest, imageName: "icons8-key-52")
     }
     func use(currentGame game: Game) -> Bool {
         guard let itemsInRoom = game.getCurrentRoom()?.items else {
@@ -140,37 +142,37 @@ final class KeyForChest: TakeDropAndDestroyItem, UsableItem {
 
 final class Chest: Item {
     init() {
-        super.init(itemName: "Сундук", descriprion: "Используйте ключ, чтобы открыть сундук", id: .chest)
+        super.init(itemName: "Сундук", descriprion: "Используйте ключ, чтобы открыть сундук", id: .chest, imageName: "icons8-toolbox-52")
     }
 }
 
 final class Torch: TakeDropAndDestroyItem {
     init() {
-        super.init(itemName: "Факел", descriprion: "Кажется, олимпийский", id: .torch)
+        super.init(itemName: "Факел", descriprion: "Кажется, олимпийский", id: .torch, imageName: "icons8-olympic-torch-52")
     }
 }
 
 final class BeanBag: TakeDropAndDestroyItem {
     init() {
-        super.init(itemName: "Погремушка", descriprion: "Неплохо шумит", id: .beanbag)
+        super.init(itemName: "Погремушка", descriprion: "Неплохо шумит", id: .beanbag, imageName: "icons8-key-52")
     }
 }
 
 final class Stone: TakeDropAndDestroyItem {
     init() {
-        super.init(itemName: "Камень", descriprion: "Твердый, но грязный", id: .stone)
+        super.init(itemName: "Камень", descriprion: "Твердый, но грязный", id: .stone, imageName: "icons8-rock-52")
     }
 }
 
 final class Mushroom: TakeDropAndDestroyItem {
     init() {
-        super.init(itemName: "Гриб", descriprion: "Несъедобный", id: .mushroom)
+        super.init(itemName: "Гриб", descriprion: "Несъедобный", id: .mushroom, imageName: "icons8-mushroom-52")
     }
 }
 
 final class Bone: TakeDropAndDestroyItem {
     init() {
-        super.init(itemName: "Кость", descriprion: "Нормальная такая рыбина была", id: .bone)
+        super.init(itemName: "Кость", descriprion: "Нормальная такая рыбина была", id: .bone, imageName: "icons8-dog-bone-52")
     }
 }
 
@@ -187,7 +189,7 @@ final class Apple: TakeDropAndDestroyItem, UsableItem {
     }
     
     init() {
-        super.init(itemName: "Яблоко", descriprion: "Можно съесть", id: .apple)
+        super.init(itemName: "Яблоко", descriprion: "Можно съесть", id: .apple, imageName: "icons8-apple-52")
     }
 }
 
@@ -205,7 +207,7 @@ final class Money: TakeDropAndDestroyItem {
     }
     
     init() {
-        super.init(itemName: "Деньги", descriprion: "", id: .money)
+        super.init(itemName: "Деньги", descriprion: "", id: .money, imageName: "icons8-money-52")
         count = Int.random(in: 1...50)
     }
 }

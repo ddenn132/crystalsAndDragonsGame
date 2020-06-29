@@ -19,15 +19,8 @@ final class GameViewController: UIViewController, GameDelegate {
     @IBOutlet private var goLeftButton: UIButton!
     @IBOutlet private var goRightButton: UIButton!
     //MARK: Room items buttons
-    @IBOutlet private var keyRoomButton: UIButton!
-    @IBOutlet private var chestRoomButton: UIButton!
-    @IBOutlet private var torchRoomButton: UIButton!
-    @IBOutlet private var stoneRoomButton: UIButton!
-    @IBOutlet private var mushroomRoomButton: UIButton!
-    @IBOutlet private var boneRoomButton: UIButton!
-    @IBOutlet private var appleRoomButton: UIButton!
-    @IBOutlet private var moneyRoomButton: UIButton!
-    @IBOutlet private var moneyRoomCountLabel: UILabel!
+    @IBOutlet var roomItemsCollectionView: UICollectionView!
+
     //MARK: Inventory items buttons
     @IBOutlet private var keyInventoryButton: UIButton!
     @IBOutlet private var torchInventoryButton: UIButton!
@@ -50,6 +43,8 @@ final class GameViewController: UIViewController, GameDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        roomItemsCollectionView?.delegate = self
+        roomItemsCollectionView?.dataSource = self
         loadRoom()
         loadInventory()
         healthPointsDidChange()
@@ -82,31 +77,9 @@ final class GameViewController: UIViewController, GameDelegate {
             showErrorMessage(error: .noDoorToEneter)
         }
     }
-    //MARK: userActions: click on item in room
-    @IBAction private func roomItemClick(_ sender: UIButton) {
-        var isItemTaked = false
-        switch sender {
-        case keyRoomButton:
-            isItemTaked = gameModel?.takeItemFromRoom(itemId: .keyForChest) ?? false
-        case torchRoomButton:
-            isItemTaked = (gameModel?.takeItemFromRoom(itemId: .torch) ?? false)
-        case mushroomRoomButton:
-            isItemTaked = (gameModel?.takeItemFromRoom(itemId: .mushroom) ?? false)
-        case stoneRoomButton:
-            isItemTaked = (gameModel?.takeItemFromRoom(itemId: .stone) ?? false)
-        case boneRoomButton:
-            isItemTaked = (gameModel?.takeItemFromRoom(itemId: .bone) ?? false)
-        case appleRoomButton:
-            isItemTaked = (gameModel?.takeItemFromRoom(itemId: .apple) ?? false)
-        case moneyRoomButton:
-            isItemTaked = (gameModel?.takeItemFromRoom(itemId: .money) ?? false)
-        default:
-            return
-        }
-        if !isItemTaked {
-            showErrorMessage(error: .noSuchInRoom)
-        }
-    }
+    
+    
+    
     //MARK: userActions: click on item in inventory
     @IBAction private func inventoryItemClick(_ sender: UIButton) {
         switch sender {
@@ -182,46 +155,7 @@ final class GameViewController: UIViewController, GameDelegate {
     }
     
     private func loadRoomItems() {
-        keyRoomButton.isHidden       = true
-        chestRoomButton.isHidden     = true
-        torchRoomButton.isHidden     = true
-        mushroomRoomButton.isHidden  = true
-        stoneRoomButton.isHidden     = true
-        boneRoomButton.isHidden      = true
-        appleRoomButton.isHidden     = true
-        moneyRoomButton.isHidden     = true
-        moneyRoomCountLabel.isHidden = true
-        
-        guard let roomItems = gameModel?.getCurrentRoom()?.items else {
-            return
-        }
-        for item in roomItems {
-            switch item {
-            case is KeyForChest:
-                keyRoomButton.isHidden = false
-            case is Chest:
-                chestRoomButton.isHidden = false
-            case is Torch:
-                torchRoomButton.isHidden = false
-            case is Stone:
-                stoneRoomButton.isHidden = false
-            case is Mushroom:
-                mushroomRoomButton.isHidden = false
-            case is Bone:
-                boneRoomButton.isHidden = false
-            case is Apple:
-                appleRoomButton.isHidden = false
-            case is Money:
-                guard let moneyItem = item as? Money else {
-                    continue
-                }
-                moneyRoomButton.isHidden = false
-                moneyRoomCountLabel.text = String(moneyItem.count)
-                moneyRoomCountLabel.isHidden = false
-            default:
-                continue
-            }
-        }
+        roomItemsCollectionView.reloadData()
     }
     //MARK: viewChange: load inventory view functions
     private func loadInventory() {
@@ -383,5 +317,34 @@ final class GameViewController: UIViewController, GameDelegate {
         let alert = UIAlertController(title: infoTitle, message: info, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Понял", style: .default, handler: nil))
         self.present(alert, animated: true)
+    }
+}
+
+extension GameViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return gameModel?.getCurrentRoom()?.items.count ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if let itemCell = collectionView.dequeueReusableCell(withReuseIdentifier: "roomViewCell", for: indexPath) as? RoomCollectionViewCell {
+            itemCell.roomItemButton.setTitle(String(gameModel?.getCurrentRoom()?.items[indexPath.row].itemName ?? ""), for: .normal)
+            if let item = gameModel?.getCurrentRoom()?.items[indexPath.row] {
+                itemCell.setItem(item: item)
+                itemCell.delegate = self
+            }
+            return itemCell
+        }
+        return UICollectionViewCell()
+    }
+}
+
+extension GameViewController: RoomItemsDelegate {
+    func roomItemClick(item: Item?) {
+        guard let takebleItem = item as? TakebleItem else {
+            return
+        }
+        if gameModel != nil {
+            takebleItem.take(currentGame: gameModel!)
+        }
     }
 }

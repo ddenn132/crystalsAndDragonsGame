@@ -43,5 +43,24 @@ class ViewController: UIViewController {
         self.present(alert, animated: true)
     }
 
+
 }
+
+//extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        print("CALL\(testArray.count)")
+//        return testArray.count
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        if let itemCell = collectionView.dequeueReusableCell(withReuseIdentifier: "roomViewCell1", for: indexPath) as? RoomCollectionViewCell {
+//            itemCell.label.text = String(testArray[indexPath.row])
+//            return itemCell
+//        }
+//        return UICollectionViewCell()
+//    }
+//
+//
+//}
+
 

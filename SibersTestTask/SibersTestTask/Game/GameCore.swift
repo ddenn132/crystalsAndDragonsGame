@@ -101,6 +101,13 @@ final class Game: RoomDelegate, InventoryDelegate {
         }
         return foundItem.take(currentGame: self)
     }
+//    func takeItemFromRoom(_ item: TakebleItem) -> Bool {
+//        if !((getCurrentRoom()?.takeItem(item)) != nil) {
+//            return false
+//        }
+//        
+//        return false
+//    }
     func dropItemInRoom(itemId id: ItemId) -> Bool {
         guard let foundItem = playerInventory.findItemById(id) as? DropableItem else {
             return false
