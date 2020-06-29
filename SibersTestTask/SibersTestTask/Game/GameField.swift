@@ -68,11 +68,6 @@ class GameField {
         currentLine[currentLine.endIndex-1].haveRightWall = true
         for line in 1...roomsInColumn+1 {
             if line != 1 {
-                var lineString = ""
-                for x in 1...roomsInRow {
-                    lineString.append("\(currentLine[x-1].multiplicity) ")
-                }
-                print(lineString)
                 if line == roomsInColumn+1 {
                     for x in 1...roomsInRow {
                         currentLine[currentLine.startIndex - 1 + x].haveDownWall = true

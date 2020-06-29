@@ -104,28 +104,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1xy-s5-pFZ">
                                 <rect key="frame" x="20" y="647" width="374" height="215"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="keyInventoryButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Orn-MN-1rf">
-                                        <rect key="frame" x="8" y="8" width="52" height="52"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="52" id="gZh-BM-9rk"/>
-                                            <constraint firstAttribute="height" constant="52" id="sQd-lq-Eqk"/>
-                                        </constraints>
-                                        <state key="normal" image="icons8-key-52"/>
-                                        <connections>
-                                            <action selector="inventoryItemClick:" destination="A3z-Vp-scU" eventType="touchUpInside" id="2tH-ne-TLw"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="torchInventoryButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5rL-8r-4nV">
-                                        <rect key="frame" x="68" y="8" width="52" height="52"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="52" id="eTT-AG-CbI"/>
-                                            <constraint firstAttribute="width" constant="52" id="uJc-10-wqW"/>
-                                        </constraints>
-                                        <state key="normal" image="icons8-olympic-torch-52"/>
-                                        <connections>
-                                            <action selector="inventoryItemClick:" destination="A3z-Vp-scU" eventType="touchUpInside" id="Onb-15-olL"/>
-                                        </connections>
-                                    </button>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NhL-Eg-30R">
                                         <rect key="frame" x="8" y="177" width="79" height="30"/>
                                         <state key="normal" title="Выбросить"/>
@@ -140,19 +118,10 @@
                                             <action selector="useItemFromInventory:" destination="A3z-Vp-scU" eventType="touchUpInside" id="0YQ-pl-ISD"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GL7-BV-0hZ">
-                                        <rect key="frame" x="8" y="76" width="358" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="m58-Ny-IO6"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mlm-bG-zdO">
-                                        <rect key="frame" x="8" y="105" width="358" height="52"/>
+                                        <rect key="frame" x="8" y="95" width="358" height="52"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="52" id="Rie-ME-ICD"/>
+                                            <constraint firstAttribute="height" constant="52" id="Saa-X6-YZS"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -165,76 +134,80 @@
                                             <action selector="destroyItemFromInventory:" destination="A3z-Vp-scU" eventType="touchUpInside" id="aAE-MT-8Kh"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="stoneInventoryButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nh7-wV-gle">
-                                        <rect key="frame" x="128" y="8" width="52" height="52"/>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Jvz-Vn-l4r">
+                                        <rect key="frame" x="2" y="2" width="370" height="64"/>
+                                        <color key="backgroundColor" red="0.93271671889999996" green="0.93271671889999996" blue="0.93271671889999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="52" id="4Ea-Hx-KZ5"/>
-                                            <constraint firstAttribute="height" constant="52" id="6Mf-1Q-HbK"/>
+                                            <constraint firstAttribute="height" constant="64" id="UFz-tw-02E"/>
                                         </constraints>
-                                        <state key="normal" image="icons8-rock-52"/>
-                                        <connections>
-                                            <action selector="inventoryItemClick:" destination="A3z-Vp-scU" eventType="touchUpInside" id="MDH-34-1oA"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="mushroomInventoryButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hKn-OE-hG7">
-                                        <rect key="frame" x="188" y="8" width="52" height="52"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="duD-P6-3Yx">
+                                            <size key="itemSize" width="52" height="52"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="5" minY="5" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="inventoryItemCell" id="j6R-YI-LKs" customClass="InventoryCollectionViewCell" customModule="SibersTestTask" customModuleProvider="target">
+                                                <rect key="frame" x="5" y="8.5" width="52" height="52"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="zLQ-eu-2Z6">
+                                                    <rect key="frame" x="0.0" y="0.0" width="52" height="52"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D0c-fj-wEZ">
+                                                            <rect key="frame" x="0.0" y="0.0" width="52" height="52"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="52" id="Ihj-3b-kJw"/>
+                                                                <constraint firstAttribute="width" constant="52" id="Sjb-gf-M2j"/>
+                                                            </constraints>
+                                                            <state key="normal" image="icons8-rattle-52"/>
+                                                            <connections>
+                                                                <action selector="itemClick:" destination="j6R-YI-LKs" eventType="touchUpInside" id="HwP-gs-c26"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="D0c-fj-wEZ" firstAttribute="centerY" secondItem="zLQ-eu-2Z6" secondAttribute="centerY" id="1xL-WS-MQP"/>
+                                                        <constraint firstItem="D0c-fj-wEZ" firstAttribute="centerX" secondItem="zLQ-eu-2Z6" secondAttribute="centerX" id="Gr2-4d-2aE"/>
+                                                    </constraints>
+                                                </collectionViewCellContentView>
+                                                <size key="customSize" width="52" height="52"/>
+                                                <connections>
+                                                    <outlet property="itemButton" destination="D0c-fj-wEZ" id="3mC-2C-5OD"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                        </cells>
+                                    </collectionView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GL7-BV-0hZ">
+                                        <rect key="frame" x="8" y="70" width="358" height="21"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="52" id="VqR-tq-csc"/>
-                                            <constraint firstAttribute="width" constant="52" id="ouv-LJ-FTa"/>
+                                            <constraint firstAttribute="height" constant="21" id="egH-pl-rfD"/>
                                         </constraints>
-                                        <state key="normal" image="icons8-mushroom-52"/>
-                                        <connections>
-                                            <action selector="inventoryItemClick:" destination="A3z-Vp-scU" eventType="touchUpInside" id="jtE-gH-Yzw"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="boneInventoryButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L53-sh-yNP">
-                                        <rect key="frame" x="248" y="8" width="52" height="52"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="52" id="93I-AT-Bzt"/>
-                                            <constraint firstAttribute="height" constant="52" id="wC0-Rx-W5i"/>
-                                        </constraints>
-                                        <state key="normal" image="icons8-dog-bone-52"/>
-                                        <connections>
-                                            <action selector="inventoryItemClick:" destination="A3z-Vp-scU" eventType="touchUpInside" id="GPP-Qq-b9T"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="appleInventoryButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVT-VA-IMi">
-                                        <rect key="frame" x="8" y="68" width="52" height="52"/>
-                                        <state key="normal" image="icons8-apple-52"/>
-                                        <connections>
-                                            <action selector="inventoryItemClick:" destination="A3z-Vp-scU" eventType="touchUpInside" id="aCr-t9-UHM"/>
-                                        </connections>
-                                    </button>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.94183081390000001" green="0.94254469870000002" blue="0.94194144010000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="Mlm-bG-zdO" firstAttribute="top" secondItem="GL7-BV-0hZ" secondAttribute="bottom" constant="8" id="08d-VX-Kbu"/>
-                                    <constraint firstItem="L53-sh-yNP" firstAttribute="leading" secondItem="hKn-OE-hG7" secondAttribute="trailing" constant="8" id="0VA-LU-e1g"/>
-                                    <constraint firstItem="GL7-BV-0hZ" firstAttribute="leading" secondItem="1xy-s5-pFZ" secondAttribute="leading" constant="8" id="0v0-Kc-aP5"/>
+                                    <constraint firstAttribute="trailing" secondItem="Jvz-Vn-l4r" secondAttribute="trailing" constant="2" id="1VA-Jr-QLH"/>
                                     <constraint firstAttribute="height" constant="215" id="3sU-6J-5cg"/>
-                                    <constraint firstItem="L53-sh-yNP" firstAttribute="top" secondItem="1xy-s5-pFZ" secondAttribute="top" constant="8" id="3wq-Lq-yu5"/>
                                     <constraint firstAttribute="bottom" secondItem="i5l-0k-xAk" secondAttribute="bottom" constant="8" id="63d-xm-cX9"/>
-                                    <constraint firstAttribute="trailing" secondItem="GL7-BV-0hZ" secondAttribute="trailing" constant="8" id="D2E-zK-nUr"/>
-                                    <constraint firstItem="hKn-OE-hG7" firstAttribute="top" secondItem="1xy-s5-pFZ" secondAttribute="top" constant="8" id="Gab-sN-oDk"/>
+                                    <constraint firstItem="Jvz-Vn-l4r" firstAttribute="leading" secondItem="1xy-s5-pFZ" secondAttribute="leading" constant="2" id="C28-Mi-3wn"/>
+                                    <constraint firstItem="Mlm-bG-zdO" firstAttribute="top" secondItem="GL7-BV-0hZ" secondAttribute="bottom" constant="4" id="Fix-RH-EBT"/>
                                     <constraint firstAttribute="trailing" secondItem="i5l-0k-xAk" secondAttribute="trailing" constant="8" id="KiT-U3-SoY"/>
-                                    <constraint firstItem="Mlm-bG-zdO" firstAttribute="leading" secondItem="1xy-s5-pFZ" secondAttribute="leading" constant="8" id="NPz-bK-5Jb"/>
-                                    <constraint firstItem="xVT-VA-IMi" firstAttribute="top" secondItem="Orn-MN-1rf" secondAttribute="bottom" constant="8" id="NWV-k7-vE1"/>
-                                    <constraint firstAttribute="trailing" secondItem="Mlm-bG-zdO" secondAttribute="trailing" constant="8" id="NZq-FX-xMi"/>
                                     <constraint firstAttribute="bottom" secondItem="AHN-hz-5xu" secondAttribute="bottom" constant="8" id="Skc-8P-YqG"/>
-                                    <constraint firstItem="hKn-OE-hG7" firstAttribute="leading" secondItem="Nh7-wV-gle" secondAttribute="trailing" constant="8" id="SrZ-w3-cUO"/>
-                                    <constraint firstItem="Nh7-wV-gle" firstAttribute="top" secondItem="1xy-s5-pFZ" secondAttribute="top" constant="8" id="WPt-WQ-TkK"/>
-                                    <constraint firstItem="5rL-8r-4nV" firstAttribute="leading" secondItem="Orn-MN-1rf" secondAttribute="trailing" constant="8" id="Wdg-26-k7v"/>
-                                    <constraint firstItem="Orn-MN-1rf" firstAttribute="top" secondItem="1xy-s5-pFZ" secondAttribute="top" constant="8" id="Wv7-Zu-VlN"/>
-                                    <constraint firstItem="xVT-VA-IMi" firstAttribute="leading" secondItem="1xy-s5-pFZ" secondAttribute="leading" constant="8" id="cMS-8K-UIN"/>
                                     <constraint firstItem="NhL-Eg-30R" firstAttribute="leading" secondItem="1xy-s5-pFZ" secondAttribute="leading" constant="8" id="e9W-i1-3Cn"/>
                                     <constraint firstItem="i5l-0k-xAk" firstAttribute="leading" secondItem="AHN-hz-5xu" secondAttribute="trailing" constant="8" id="fdQ-BQ-yKP"/>
                                     <constraint firstAttribute="width" constant="374" id="hl1-LE-sW9"/>
+                                    <constraint firstItem="GL7-BV-0hZ" firstAttribute="leading" secondItem="1xy-s5-pFZ" secondAttribute="leading" constant="8" id="hzf-oi-FUJ"/>
                                     <constraint firstItem="AHN-hz-5xu" firstAttribute="centerX" secondItem="1xy-s5-pFZ" secondAttribute="centerX" id="iL5-o8-s3w"/>
-                                    <constraint firstItem="Nh7-wV-gle" firstAttribute="leading" secondItem="5rL-8r-4nV" secondAttribute="trailing" constant="8" id="ixe-ym-KCU"/>
+                                    <constraint firstAttribute="trailing" secondItem="GL7-BV-0hZ" secondAttribute="trailing" constant="8" id="ien-NS-0Ii"/>
+                                    <constraint firstAttribute="trailing" secondItem="Mlm-bG-zdO" secondAttribute="trailing" constant="8" id="j7I-bz-7b8"/>
                                     <constraint firstAttribute="bottom" secondItem="NhL-Eg-30R" secondAttribute="bottom" constant="8" id="kDx-Qu-9Kv"/>
-                                    <constraint firstItem="GL7-BV-0hZ" firstAttribute="top" secondItem="Orn-MN-1rf" secondAttribute="bottom" constant="16" id="qQk-qQ-nSB"/>
-                                    <constraint firstItem="5rL-8r-4nV" firstAttribute="top" secondItem="1xy-s5-pFZ" secondAttribute="top" constant="8" id="qdJ-4B-zGQ"/>
-                                    <constraint firstItem="Orn-MN-1rf" firstAttribute="leading" secondItem="1xy-s5-pFZ" secondAttribute="leading" constant="8" id="wNA-8x-pkN"/>
+                                    <constraint firstItem="Jvz-Vn-l4r" firstAttribute="top" secondItem="1xy-s5-pFZ" secondAttribute="top" constant="2" id="sJv-lB-ACq"/>
+                                    <constraint firstItem="Mlm-bG-zdO" firstAttribute="leading" secondItem="1xy-s5-pFZ" secondAttribute="leading" constant="8" id="uw0-qW-pcg"/>
+                                    <constraint firstItem="GL7-BV-0hZ" firstAttribute="top" secondItem="Jvz-Vn-l4r" secondAttribute="bottom" constant="4" id="wOm-RL-hoS"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G7d-so-sYk">
@@ -393,8 +366,6 @@
                         <viewLayoutGuide key="safeArea" id="Hok-ab-59K"/>
                     </view>
                     <connections>
-                        <outlet property="appleInventoryButton" destination="xVT-VA-IMi" id="PF8-LI-Ibb"/>
-                        <outlet property="boneInventoryButton" destination="L53-sh-yNP" id="p5z-OI-ZUG"/>
                         <outlet property="destroyInventoryButton" destination="AHN-hz-5xu" id="GwG-VA-Fha"/>
                         <outlet property="dropInventoryButton" destination="NhL-Eg-30R" id="j74-n1-eKa"/>
                         <outlet property="goDownButton" destination="t2a-dH-pYc" id="e8E-vn-T7L"/>
@@ -404,12 +375,9 @@
                         <outlet property="healthPointsLabel" destination="QBm-E9-Pbw" id="G1n-Ib-HcS"/>
                         <outlet property="inventoryItemDescription" destination="Mlm-bG-zdO" id="ZT7-Mo-aSL"/>
                         <outlet property="inventoryItemName" destination="GL7-BV-0hZ" id="MXY-eS-AK0"/>
-                        <outlet property="keyInventoryButton" destination="Orn-MN-1rf" id="uFi-2w-cE4"/>
+                        <outlet property="inventoryItemsCollectionView" destination="Jvz-Vn-l4r" id="7s4-6h-mu3"/>
                         <outlet property="moneyCountLabel" destination="G7d-so-sYk" id="56u-M7-5KQ"/>
-                        <outlet property="mushroomInventoryButton" destination="hKn-OE-hG7" id="1Ve-jN-Q3M"/>
                         <outlet property="roomItemsCollectionView" destination="RQs-hF-VG0" id="h1g-Jl-SuC"/>
-                        <outlet property="stoneInventoryButton" destination="Nh7-wV-gle" id="kqY-aK-mcZ"/>
-                        <outlet property="torchInventoryButton" destination="5rL-8r-4nV" id="HvN-Z9-9S2"/>
                         <outlet property="useInventoryButton" destination="i5l-0k-xAk" id="l29-Mu-Y5r"/>
                     </connections>
                 </viewController>
@@ -422,15 +390,10 @@
         <image name="arrow_down" width="52" height="52"/>
         <image name="arrow_left" width="52" height="52"/>
         <image name="arrow_right" width="52" height="52"/>
-        <image name="icons8-apple-52" width="52" height="52"/>
-        <image name="icons8-dog-bone-52" width="52" height="52"/>
         <image name="icons8-heart-outline-26" width="26" height="26"/>
-        <image name="icons8-key-52" width="52" height="52"/>
         <image name="icons8-money-26" width="26" height="26"/>
         <image name="icons8-money-52" width="52" height="52"/>
-        <image name="icons8-mushroom-52" width="52" height="52"/>
-        <image name="icons8-olympic-torch-52" width="52" height="52"/>
-        <image name="icons8-rock-52" width="52" height="52"/>
+        <image name="icons8-rattle-52" width="52" height="52"/>
         <image name="Копия icons8-right-52" width="52" height="52"/>
     </resources>
 </document>

@@ -20,7 +20,8 @@ final class GameViewController: UIViewController, GameDelegate {
     @IBOutlet private var goRightButton: UIButton!
     //MARK: Room items buttons
     @IBOutlet var roomItemsCollectionView: UICollectionView!
-
+    @IBOutlet var inventoryItemsCollectionView: UICollectionView!
+    
     //MARK: Inventory items buttons
     @IBOutlet private var keyInventoryButton: UIButton!
     @IBOutlet private var torchInventoryButton: UIButton!
@@ -45,6 +46,8 @@ final class GameViewController: UIViewController, GameDelegate {
         super.viewDidLoad()
         roomItemsCollectionView?.delegate = self
         roomItemsCollectionView?.dataSource = self
+        inventoryItemsCollectionView?.dataSource = self
+        inventoryItemsCollectionView?.delegate = self
         loadRoom()
         loadInventory()
         healthPointsDidChange()
@@ -58,12 +61,12 @@ final class GameViewController: UIViewController, GameDelegate {
     
     //MARK: userActions: click on room door
     @IBAction private func goRightRoom(_ sender: Any) {
-        if !(gameModel?.enterDoor(.right) ?? false){
+        if !(gameModel?.enterDoor(.right) ?? false) {
             showErrorMessage(error: .noDoorToEneter)
         }
     }
     @IBAction private func goLeftRoom(_ sender: Any) {
-        if !(gameModel?.enterDoor(.left) ?? false){
+        if !(gameModel?.enterDoor(.left) ?? false) {
             showErrorMessage(error: .noDoorToEneter)
         }
     }
@@ -76,70 +79,50 @@ final class GameViewController: UIViewController, GameDelegate {
         if !(gameModel?.enterDoor(.down) ?? false){
             showErrorMessage(error: .noDoorToEneter)
         }
-    }
-    
-    
-    
-    //MARK: userActions: click on item in inventory
-    @IBAction private func inventoryItemClick(_ sender: UIButton) {
-        switch sender {
-        case keyInventoryButton:
-            loadItemById(.keyForChest)
-            selectedInventoryItem = .keyForChest
-        case torchInventoryButton:
-            loadItemById(.torch)
-            selectedInventoryItem = .torch
-        case stoneInventoryButton:
-            loadItemById(.stone)
-            selectedInventoryItem = .stone
-        case mushroomInventoryButton:
-            loadItemById(.mushroom)
-            selectedInventoryItem = .mushroom
-        case boneInventoryButton:
-            loadItemById(.bone)
-            selectedInventoryItem = .bone
-        case appleInventoryButton:
-            loadItemById(.apple)
-            selectedInventoryItem = .apple
-        default:
-            return
-        }
-    }
+    }    
     //MARK: userActions: actions with item in inventory
     @IBAction private func dropItemFromInventory(_ sender: Any) {
-        guard let itemToDrop = selectedInventoryItem else {
-            return
-        }
-        if !(gameModel?.dropItemInRoom(itemId: itemToDrop) ?? false) {
+        guard let itemToDrop = selectedInventoryItem as? DropableItem else {
             showErrorMessage(error: .cantDropItem)
             return
+        }
+        guard let game = gameModel else {
+            showErrorMessage(error: .cantDropItem)
+            return
+        }
+        if !itemToDrop.drop(currentGame: game) {
+            showErrorMessage(error: .cantDropItem)
         }
         selectedInventoryItem = nil
     }
     @IBAction private func destroyItemFromInventory(_ sender: Any) {
-        guard let itemToDestroy = selectedInventoryItem else {
-            return
-        }
-        if !(gameModel?.destroyItemFromInventory(itemId: itemToDestroy) ?? false) {
+        guard let itemToDrop = selectedInventoryItem as? DestroyableItem else {
             showErrorMessage(error: .cantDropItem)
             return
+        }
+        guard let game = gameModel else {
+            showErrorMessage(error: .cantDropItem)
+            return
+        }
+        if !itemToDrop.destroy(currentGame: game) {
+            showErrorMessage(error: .cantDropItem)
         }
         selectedInventoryItem = nil
     }
     @IBAction private func useItemFromInventory(_ sender: Any) {
-        guard let itemToUse = selectedInventoryItem else {
+        guard let itemToDrop = selectedInventoryItem as? UsableItem else {
+            showErrorMessage(error: .cantDropItem)
             return
         }
-        if !(gameModel?.useItemFromInventory(itemId: itemToUse) ?? false) {
-            showErrorMessage(itemId: itemToUse, error: .cantUsetItem)
+        guard let game = gameModel else {
+            showErrorMessage(error: .cantDropItem)
             return
+        }
+        if !itemToDrop.use(currentGame: game) {
+            showErrorMessage(error: .cantDropItem)
         }
         selectedInventoryItem = nil
     }
-    
-    
-    
-    
     //MARK: viewChangeFunctions
     //MARK: viewChange: load room view functions
     private func loadRoom() {
@@ -159,94 +142,33 @@ final class GameViewController: UIViewController, GameDelegate {
     }
     //MARK: viewChange: load inventory view functions
     private func loadInventory() {
-        keyInventoryButton.isHidden = true
-        torchInventoryButton.isHidden = true
-        stoneInventoryButton.isHidden = true
-        mushroomInventoryButton.isHidden = true
-        boneInventoryButton.isHidden = true
-        appleInventoryButton.isHidden = true
-        
-        guard let inventoryItems = gameModel?.playerInventory.items else {
-            return
-        }
-        
-        for item in inventoryItems {
-            switch item {
-            case is KeyForChest:
-                keyInventoryButton.isHidden = false
-            case is Torch:
-                torchInventoryButton.isHidden = false
-            case is Stone:
-                stoneInventoryButton.isHidden = false
-            case is Mushroom:
-                mushroomInventoryButton.isHidden = false
-            case is Bone:
-                boneInventoryButton.isHidden = false
-            case is Apple:
-                appleInventoryButton.isHidden = false
-            default:
-                continue
-            }
-        }
+        inventoryItemsCollectionView.reloadData()
     }
     
-    private var selectedInventoryItem: ItemId? { //storage itemId, that choosed by user in inventory
+    private var selectedInventoryItem: Item? { //storage itemId, that choosed by user in inventory
         didSet {
             if selectedInventoryItem == nil {
                 clearInventoryItemMenu()
+                loadInventory()
             }
         }
     }
-    //show item descripiton and actions buttons
-    private func loadItemById(_ id: ItemId) {
-        //show actions buttons that deoends on item class
-        func setInventoryButtonsByClass(_ itemType: Item.Type) {
-            if itemType as? UsableItem.Type != nil {
-                useInventoryButton.isHidden = false
-            }
-            if itemType as? DropableItem.Type != nil {
-                dropInventoryButton.isHidden = false
-            }
-            if itemType as? DestroyableItem.Type != nil {
-                destroyInventoryButton.isHidden = false
-            }
-        }
+    private func showItemMenuInInventory(item: Item) {
         clearInventoryItemMenu()
-        let item = gameModel?.playerInventory.findItemById(id)
-        inventoryItemName.text = item?.itemName
-        inventoryItemDescription.text = item?.itemDecription
-        switch id {
-        case .keyForChest:
-            keyInventoryButton.backgroundColor = UIColor.systemGray
-            setInventoryButtonsByClass(KeyForChest.self)
-        case .torch:
-            torchInventoryButton.backgroundColor = UIColor.systemGray
-            setInventoryButtonsByClass(Torch.self)
-        case .stone:
-            stoneInventoryButton.backgroundColor = UIColor.systemGray
-            setInventoryButtonsByClass(Stone.self)
-        case .mushroom:
-            mushroomInventoryButton.backgroundColor = UIColor.systemGray
-            setInventoryButtonsByClass(Mushroom.self)
-        case .bone:
-            boneInventoryButton.backgroundColor = UIColor.systemGray
-            setInventoryButtonsByClass(Bone.self)
-        case .apple:
-            appleInventoryButton.backgroundColor = UIColor.systemGray
-            setInventoryButtonsByClass(Apple.self)
-        default:
-            return
+        inventoryItemName.text = item.itemName
+        inventoryItemDescription.text = item.itemDecription
+        if let _ = item as? UsableItem {
+            useInventoryButton.isHidden = false
         }
-        return
+        if let _ = item as? DropableItem {
+            dropInventoryButton.isHidden = false
+        }
+        if let _ = item as? DestroyableItem {
+            destroyInventoryButton.isHidden = false
+        }
     }
-    
     private func clearInventoryItemMenu() {
-        keyInventoryButton.backgroundColor = UIColor.clear
-        stoneInventoryButton.backgroundColor = UIColor.clear
-        torchInventoryButton.backgroundColor = UIColor.clear
-        mushroomInventoryButton.backgroundColor = UIColor.clear
-        boneInventoryButton.backgroundColor = UIColor.clear
-        appleInventoryButton.backgroundColor = UIColor.clear
+        print("clear")
         inventoryItemName.text = nil
         inventoryItemDescription.text = nil
         dropInventoryButton.isHidden = true
@@ -322,18 +244,38 @@ final class GameViewController: UIViewController, GameDelegate {
 
 extension GameViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return gameModel?.getCurrentRoom()?.items.count ?? 0
+        switch collectionView {
+        case roomItemsCollectionView:
+            return gameModel?.getCurrentRoom()?.items.count ?? 0
+        case inventoryItemsCollectionView:
+            return gameModel?.playerInventory.items.count ?? 0
+        default:
+            return 0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let itemCell = collectionView.dequeueReusableCell(withReuseIdentifier: "roomViewCell", for: indexPath) as? RoomCollectionViewCell {
-            itemCell.roomItemButton.setTitle(String(gameModel?.getCurrentRoom()?.items[indexPath.row].itemName ?? ""), for: .normal)
-            if let item = gameModel?.getCurrentRoom()?.items[indexPath.row] {
-                itemCell.setItem(item: item)
-                itemCell.delegate = self
+        switch collectionView {
+        case roomItemsCollectionView:
+            if let itemCell = collectionView.dequeueReusableCell(withReuseIdentifier: "roomViewCell", for: indexPath) as? RoomCollectionViewCell {
+                if let item = gameModel?.getCurrentRoom()?.items[indexPath.row] {
+                    itemCell.setItem(item: item)
+                    itemCell.delegate = self
+                }
+                return itemCell
             }
-            return itemCell
+        case inventoryItemsCollectionView:
+            if let itemCell = collectionView.dequeueReusableCell(withReuseIdentifier: "inventoryItemCell", for: indexPath) as? InventoryCollectionViewCell {
+                if let item = gameModel?.playerInventory.items[indexPath.row] {
+                    itemCell.setItem(item: item)
+                    itemCell.delegate = self
+                }
+                return itemCell
+            }
+        default:
+            return UICollectionViewCell()
         }
+
         return UICollectionViewCell()
     }
 }
@@ -344,7 +286,16 @@ extension GameViewController: RoomItemsDelegate {
             return
         }
         if gameModel != nil {
-            takebleItem.take(currentGame: gameModel!)
+            _ = takebleItem.take(currentGame: gameModel!)
         }
+    }
+}
+extension GameViewController: InventoryItemsDelegate {
+    func inventoryItemClick(item: Item?) {
+        if let clickedItem = item {
+            selectedInventoryItem = item
+            showItemMenuInInventory(item: clickedItem)
+        }
+        return
     }
 }

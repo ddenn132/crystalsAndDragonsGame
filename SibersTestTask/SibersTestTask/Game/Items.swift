@@ -51,8 +51,6 @@ class RoomItemsFiller {
         .apple:0.2,
         .beanbag:0.1,
         .bone:0.1,
-        .chest:0,
-        .keyForChest:0,
         .mushroom:0.1,
         .stone:0.1,
         .torch:0.1,
@@ -154,7 +152,7 @@ final class Torch: TakeDropAndDestroyItem {
 
 final class BeanBag: TakeDropAndDestroyItem {
     init() {
-        super.init(itemName: "Погремушка", descriprion: "Неплохо шумит", id: .beanbag, imageName: "icons8-key-52")
+        super.init(itemName: "Погремушка", descriprion: "Неплохо шумит", id: .beanbag, imageName: "icons8-rattle-52")
     }
 }
 
